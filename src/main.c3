@@ -128,6 +128,7 @@ fn void? test_pipeline() {
 
 	JsonParser parser;
 	JsonValue value = parser.get_value(list)!;
+	defer (void)value.free_inner();
 
 	HashMap{String, JsonValue}* response_json = value.as_object;
 	double userId = response_json.get("userId").as_number!;
